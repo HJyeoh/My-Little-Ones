@@ -15,13 +15,13 @@ const Hero = () => {
   return (
     <div className='hero'>
       <div className="hero-left">
-        <h2>NEW ARRIVALS ONLY</h2>
+        <h2>MY LITTLE ONES</h2>
         <div>
             <div className="hero-hand-icon">
-                <p>new👋</p>
+                <p>Best</p>
             </div>
-            <p>collection</p>
-            <p>for everyone</p>
+            <p>products for mommy & baby</p>
+            <p></p>
         </div>
         <div className="hero-latest-btn" onClick={scrollToPopular}>
             <div>See What's Popular → </div>
