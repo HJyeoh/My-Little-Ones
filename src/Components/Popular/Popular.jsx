@@ -9,7 +9,7 @@ const Popular = () => {
     
 
     return (
-        <div className='popular'>
+        <div id="popular-section" className='popular'>
             <h1>POPULAR IN BABY</h1>
             <hr />
             <div className="popular-item">
