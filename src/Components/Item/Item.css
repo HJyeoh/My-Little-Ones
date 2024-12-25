@@ -4,8 +4,7 @@
 .item img {
     width: 300px; 
     height: 400px; 
-    object-fit: cover; 
-    
+    object-fit: cover;    
 }
 
 .item p{
