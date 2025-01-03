@@ -1,11 +1,21 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import './Navbar.css';
 import logo from '../Assets/logo.jpg';
 import cart_icon from '../Assets/cart.jpg';
+import nav_dropdown from '../Assets/nav_dropdown.png';
+import { ShopContext } from '../../Context/ShopContext';  {/* Corrected import */}
 
 const Navbar = () => {
   const [menu, setMenu] = useState('home');
+  const menuRef = useRef();
+
+  const dropdown_toggle = (e) => {
+    menuRef.current.classList.toggle('nav-menu-visible');
+    e.target.classList.toggle('open');
+  };
+
+  const { getTotalCartItems } = useContext(ShopContext);  {/* Corrected usage */}
 
   return (
     <div className="navbar">
@@ -13,7 +23,8 @@ const Navbar = () => {
         <img src={logo} alt="logo" style={{ width: '50px', height: '50px', objectFit: 'contain' }} />
         <p>MY LITTLE ONES</p>
       </div>
-      <ul className="nav-menu">
+      <img className="nav-dropdown" onClick={dropdown_toggle} src={nav_dropdown} alt="" />
+      <ul ref={menuRef} className="nav-menu">
         <li onClick={() => setMenu('home')}><Link to="/">Home</Link>{menu === 'home' && <hr />}</li>
         <li onClick={() => setMenu('boy_clothes')}><Link to="/boy_clothes">Boy Clothes</Link>{menu === 'boy_clothes' && <hr />}</li>
         <li onClick={() => setMenu('girl_clothes')}><Link to="/girl_clothes">Girl Clothes</Link>{menu === 'girl_clothes' && <hr />}</li>
@@ -28,7 +39,7 @@ const Navbar = () => {
       <div className="nav-login-cart">
         <Link to='/login'><button>Login</button></Link>
         <Link to='/cart'><img src={cart_icon} alt="cart" className="cart-icon" /></Link>
-        <div className="nav-cart-count">0</div>
+        <div className="nav-cart-count">{getTotalCartItems()}</div>
       </div>
     </div>
   );

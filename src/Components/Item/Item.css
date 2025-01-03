@@ -6,7 +6,12 @@
     height: 400px; 
     object-fit: cover;    
 }
-
+.item img {
+    width: 100%;        /* Image takes up full width of its grid container */
+    height: auto;       /* Maintain aspect ratio */
+    max-width: 100%;    /* Prevent image from exceeding container */
+    object-fit: cover;  /* Ensure proper cropping if necessary */
+}
 .item p{
     margin: 6px 0px;
 }
@@ -21,3 +26,49 @@
     transform: scale(1.05);
     transition: 0.6s;
 }
+@media(max-width:1280px){
+    .item{
+        width: 220px;
+        font-size: 14px; 
+     }
+     .item img{
+         width: 220px;
+     }
+     .item-prices{
+        font-size:14px;
+
+     }
+}
+@media(max-width:1024px){
+    .item{
+        width:170px;
+        font-size: 13px;
+    }
+    .item img{
+        width: 170px;
+    }
+    .item-prices{
+        font-size:13px;
+     }
+}
+@media(max-width:800px){
+    .item{
+        width:120px;
+        font-size: 12px;
+    }
+    .item img{
+        width: 120px;
+    }
+    .item-prices{
+        font-size:12px;
+     }
+}
+@media(max-width:500px){
+    .item{
+        width:160px;
+    }
+    .item img{
+        width: 160px;
+    }
+}
+

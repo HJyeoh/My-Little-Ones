@@ -7,7 +7,7 @@ import NewCollections from '../Components/NewCollections/NewCollections'
 
 const Home = () => {
   return (
-    <>
+    
     <div>
       <Hero/>
       <Popular/>
@@ -16,7 +16,7 @@ const Home = () => {
 
       
     </div>
-    </>
+    
   )
 }
 
