@@ -1,10 +1,20 @@
 import React, { useContext } from 'react';
+import { useNavigate } from 'react-router-dom';  // Import useNavigate
 import './CartItems.css';
 import { ShopContext } from '../../Context/ShopContext';
 import remove_icon from '../Assets/cart_cross_icon.png';
 
 const CartItems = () => {
     const { getTotalCartAmount, all_product, cartItems, removeFromCart } = useContext(ShopContext);
+    const navigate = useNavigate();  // Initialize the navigate function
+
+    // Format numbers to one decimal place
+    const formatPrice = (price) => price.toFixed(1);
+
+    // Function to handle checkout redirection
+    const handleCheckout = () => {
+        navigate('/payment');  // Redirect to the Payment page
+    };
 
     return (
         <div className="cartitems">
@@ -24,10 +34,10 @@ const CartItems = () => {
                             <div key={product.id}>
                                 <div className="cartitems-format cartitems-format-main">
                                     <img src={product.photo} alt="product" className="carticon-product-icon" />
-                                    <p>{product.title}</p> {/* Replace with product title or name */}
-                                    <p>RM{product.new_price}</p>
+                                    <p>{product.name}</p> 
+                                    <p>RM{formatPrice(product.price)}</p>
                                     <button className='cartitems-quantity'>{cartItems[product.id]}</button>
-                                    <p>RM{product.new_price * cartItems[product.id]}</p>
+                                    <p>RM{formatPrice(product.price * cartItems[product.id])}</p>
                                     <img className='cartitems-remove-icon' src={remove_icon} onClick={() => removeFromCart(product.id)} alt="remove item" />
                                 </div>
                                 <hr />
@@ -42,7 +52,7 @@ const CartItems = () => {
                     <h1>Cart Totals</h1>
                     <div className="cartitems-total-item">
                         <p>Subtotal</p>
-                        <p>RM{getTotalCartAmount()}</p>
+                        <p>RM{formatPrice(getTotalCartAmount())}</p>
                     </div>
                     <hr />
                     <div className="cartitems-total-item">
@@ -52,17 +62,11 @@ const CartItems = () => {
                     <hr />
                     <div className="cartitems-total-item">
                         <h3>Total</h3>
-                        <h3>RM{getTotalCartAmount()}</h3>
+                        <h3>RM{formatPrice(getTotalCartAmount())}</h3>
                     </div>
                 </div>
-                <button>PROCEED TO CHECKOUT</button>
-            </div>
-            <div className="cartitems-promocode">
-                <p>If you have a promo code, enter it here</p>
-                <div className="cartitems-promobox">
-                    <input type="text" placeholder="promo code" />
-                    <button>Submit</button>
-                </div>
+                {/* Update the button to use the handleCheckout function */}
+                <button onClick={handleCheckout}>PROCEED TO CHECKOUT</button>
             </div>
         </div>
     );

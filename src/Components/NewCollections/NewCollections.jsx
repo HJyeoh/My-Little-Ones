@@ -5,7 +5,7 @@ import Item from '../Item/Item';
     
 const NewCollections = () => {
 
-const filteredProducts2 = new_collections.filter((item) => item.id >= 21 && item.id <= 40);
+const filteredProducts2 = new_collections.filter((item) => item.id >= 21 && item.id <= 28);
   
     return (
     <div className='new-collections'>

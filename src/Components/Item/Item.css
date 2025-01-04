@@ -1,74 +1,79 @@
-.item{
-    width: 350px;
+.items-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 20px;
+    padding: 20px;
 }
-.item img {
-    width: 300px; 
-    height: 400px; 
-    object-fit: cover;    
-}
-.item img {
-    width: 100%;        /* Image takes up full width of its grid container */
-    height: auto;       /* Maintain aspect ratio */
-    max-width: 100%;    /* Prevent image from exceeding container */
-    object-fit: cover;  /* Ensure proper cropping if necessary */
-}
-.item p{
-    margin: 6px 0px;
-}
-.item-prices{
+
+.item {
     display: flex;
-    gap:20px;
-    font-size: 18px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #fff;
+    padding: 10px;
+    height: 100%;
+}
+
+.item img {
+    width: 100%;
+    height: auto; 
+    max-width: 300px; 
+    object-fit: cover;
+}
+
+.item p {
+    margin: 6px 0;
+    text-align: center;
+    font-size: 14px;
+}
+
+.item-prices {
+    display: flex;
+    gap: 10px;
+    font-size: 16px;
     font-weight: 600;
     color: #374151;
+    justify-content: center;
 }
-.item:hover{
-    transform: scale(1.05);
-    transition: 0.6s;
-}
-@media(max-width:1280px){
-    .item{
-        width: 220px;
-        font-size: 14px; 
-     }
-     .item img{
-         width: 220px;
-     }
-     .item-prices{
-        font-size:14px;
 
-     }
+.item:hover {
+    transform: scale(1.05);
+    transition: transform 0.3s ease-in-out;
 }
+
+@media(max-width:1280px){
+    .item {
+        font-size: 14px;
+    }
+    .item-prices {
+        font-size: 14px;
+    }
+}
+
 @media(max-width:1024px){
-    .item{
-        width:170px;
+    .item {
         font-size: 13px;
     }
-    .item img{
-        width: 170px;
-    }
-    .item-prices{
-        font-size:13px;
-     }
-}
-@media(max-width:800px){
-    .item{
-        width:120px;
-        font-size: 12px;
-    }
-    .item img{
-        width: 120px;
-    }
-    .item-prices{
-        font-size:12px;
-     }
-}
-@media(max-width:500px){
-    .item{
-        width:160px;
-    }
-    .item img{
-        width: 160px;
+    .item-prices {
+        font-size: 13px;
     }
 }
 
+@media(max-width:800px){
+    .item {
+        font-size: 12px;
+    }
+    .item-prices {
+        font-size: 12px;
+    }
+}
+
+@media(max-width:500px){
+    .item {
+        font-size: 11px;
+    }
+    .item-prices {
+        font-size: 11px;
+    }
+}
