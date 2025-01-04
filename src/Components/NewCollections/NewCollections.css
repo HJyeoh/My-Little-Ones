@@ -1,27 +1,147 @@
-.new-collections{
+.new-collections {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap:10px;
-    height: 360vh;
+    gap: 10px;
+    padding-bottom: 20px; /* Optional, to add some space at the bottom */
 }
-.new-collections h1{
+
+.new-collections h1 {
     margin-top: 30px;
-    color:#171717;
+    color: #171717;
     font-size: 50px;
     font-weight: 600;
+    text-align: center; /* Center the title */
 }
-.new-collections hr{
+
+.new-collections hr {
     width: 350px;
     height: 6px;
     border-radius: 10px;
     background: #252525;
 }
-.collections{
+
+.collections {
     margin: 20px auto;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-columns: repeat(4, 1fr); /* 4 columns by default */
     row-gap: 80px;
+    column-gap: 20px;  /* Same gap between columns */
     justify-content: center;
     width: fit-content;
+}
+
+.collection-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center; /* Center the text */
+}
+
+.collection-item img {
+    width: auto; /* Use original image size */
+    height: auto; /* Maintain original aspect ratio */
+    max-width: 100%; /* Prevent image from exceeding container width */
+}
+
+.collection-item .item-name,
+.collection-item .item-price {
+    margin-top: 10px;
+    font-size: 18px;
+    color: #171717;
+}
+
+/* Mobile responsiveness */
+@media(max-width: 1280px) {
+    .new-collections h1 {
+        font-size: 40px;
+    }
+    .new-collections hr {
+        width: 160px;
+        height: 4px;
+    }
+    .collections {
+        gap: 20px;
+        margin-top: 30px;
+    }
+}
+
+@media(max-width: 1024px) {
+    .new-collections h1 {
+        font-size: 30px;
+    }
+    .new-collections hr {
+        width: 120px;
+        height: 3px;
+    }
+    .collections {
+        gap: 15px;
+        margin-top: 20px;
+    }
+}
+
+@media(max-width: 800px) {
+    .new-collections {
+        gap: 6px;
+    }
+    .new-collections h1 {
+        font-size: 25px; /* Slightly smaller size for mobile */
+    }
+    .new-collections hr {
+        width: 100px;
+        height: 3px;
+    }
+    .collections {
+        gap: 5px;
+    }
+}
+
+@media(max-width: 600px) {
+    .new-collections h1 {
+        font-size: 20px; /* Make title smaller on smaller screens */
+        margin-top: 15px; /* Adjust margin to keep the title visible */
+    }
+
+    .collection-item .item-name,
+    .collection-item .item-price {
+        font-size: 14px; /* Reduce font size to make it fit on small screens */
+    }
+
+    .collections {
+        display: grid;
+        grid-template-columns: 1fr 1fr; /* 2 columns on very small screens */
+        gap: 10px; /* Reduce gap between items */
+    }
+
+    .collection-item img {
+        max-width: 90%; /* Ensure images fit within the grid container on small screens */
+        height: auto; /* Maintain the aspect ratio */
+    }
+}
+
+@media(max-width: 480px) {
+    .new-collections h1 {
+        font-size: 18px; /* Further reduce font size for ultra-small screens */
+        margin-top: 10px;
+    }
+
+    .new-collections hr {
+        width: 80px; /* Make the line smaller on small screens */
+        height: 2px; /* Thinner line */
+    }
+
+    .collection-item .item-name,
+    .collection-item .item-price {
+        font-size: 12px; /* Further reduce font size */
+    }
+
+    .collections {
+        grid-template-columns: 1fr; /* 1 column on extra small screens */
+        gap: 8px; /* Smaller gap between items */
+    }
+
+    .collection-item img {
+        max-width: 80%; /* Further reduce image size */
+    }
 }

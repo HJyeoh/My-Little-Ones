@@ -17,9 +17,7 @@ const Hero = () => {
       <div className="hero-left">
         <h2>MY LITTLE ONES</h2>
         <div>
-            <div className="hero-hand-icon">
-                <p>Best</p>
-            </div>
+            <p>Best</p>
             <p>products for mommy & baby</p>
             <p></p>
         </div>
@@ -28,7 +26,7 @@ const Hero = () => {
         </div>
       </div>
       <div className="hero-right">
-        <img src={hero_image} alt="" style={{ width: '550px', height: '550px', objectFit: 'contain' }}/>
+      <img src={hero_image} alt="Hero Section" className="hero-image" />
 
 
       </div>

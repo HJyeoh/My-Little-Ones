@@ -16,6 +16,7 @@ import maternity_care_banner from './Components/Assets/maternity_care_banner.png
 import furniture_banner from './Components/Assets/furniture_banner.png'
 import toys_banner from './Components/Assets/toys_banner.png'
 import shoes_banner from './Components/Assets/shoes_banner.png'
+import Payment from './Pages/Payment';
 
 function App() {
   return (
@@ -35,6 +36,7 @@ function App() {
           <Route path="/maternity_clothes" element={<ShopCategory banner={maternity_clothes_banner} category="maternity_clothes" />} />
           <Route path="/product/:productId" element={<Product />} />
           <Route path="/cart" element={<Cart />} />
+          <Route path="/payment" element={<Payment />} />
           <Route path="/login" element={<LoginSignup />} />
         </Routes>
         <Footer/>
