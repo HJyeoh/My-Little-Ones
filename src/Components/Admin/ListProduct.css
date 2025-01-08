@@ -1,0 +1,39 @@
+/* ListProduct.css */
+.list-product {
+  padding: 20px;
+}
+
+.product-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.product-item {
+  flex: 1 1 calc(33.33% - 20px); /* Three items per row */
+  box-sizing: border-box;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.product-item img {
+  width: 100%;
+  height: auto;
+  max-width: 200px;
+  margin-bottom: 10px;
+}
+
+.delete-button {
+  background-color: red;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.delete-button:hover {
+  background-color: darkred;
+}
