@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import CartItems from "../Components/CartItems/CartItems"; // Add this import statement
 
 const Cart = () => {
   // Step 1: Initialize state for products
@@ -31,28 +32,7 @@ const Cart = () => {
 
   return (
     <div>
-      <h1>All Products</h1>
-      <div>
-        {products.length > 0 ? (
-          // Map through the products and display them
-          products.map((product) => (
-            <div key={product.id}>
-              <h2>{product.name}</h2>
-              <img
-                src={product.image}
-                alt={product.name}
-                style={{ width: "100px" }}
-              />
-              <p>Category: {product.category}</p>
-              <p>Price: ${product.new_price}</p>
-              <p>Old Price: ${product.old_price}</p>
-              <p>Available: {product.available ? "Yes" : "No"}</p>
-            </div>
-          ))
-        ) : (
-          <p>No products available</p>
-        )}
-      </div>
+      <CartItems />
     </div>
   );
 };

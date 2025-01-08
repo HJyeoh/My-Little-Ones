@@ -1,12 +1,22 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useContext } from "react";
 import { Link } from "react-router-dom";
 import "./Navbar.css";
 import logo from "../Assets/logo.jpg";
 import cart_icon from "../Assets/cart.jpg";
+import nav_dropdown from "../Assets/nav_dropdown.png";
+import { ShopContext } from "../../Context/ShopContext";
 
 const Navbar = () => {
   const userType = localStorage.getItem("userType");
   const [menu, setMenu] = useState("home");
+  const [isMenuVisible, setIsMenuVisible] = useState(false); // To handle menu visibility
+  const menuRef = useRef();
+
+  const dropdown_toggle = () => {
+    setIsMenuVisible(!isMenuVisible); // Toggle the menu visibility
+  };
+
+  const { getTotalCartItems } = useContext(ShopContext);
 
   return (
     <div className="navbar">
@@ -16,9 +26,18 @@ const Navbar = () => {
           alt="logo"
           style={{ width: "50px", height: "50px", objectFit: "contain" }}
         />
-        <p>MY LITTLE ONES</p>
+        <p style={{ fontSize: "12px" }}>MY LITTLE ONES</p>
       </div>
-      <ul className="nav-menu">
+      <img
+        className="nav-dropdown"
+        onClick={dropdown_toggle}
+        src={nav_dropdown}
+        alt="dropdown"
+      />
+      <ul
+        ref={menuRef}
+        className={`nav-menu ${isMenuVisible ? "nav-menu-visible" : ""}`}
+      >
         <li onClick={() => setMenu("home")}>
           <Link to="/">Home</Link>
           {menu === "home" && <hr />}
@@ -82,7 +101,7 @@ const Navbar = () => {
             className="cart-icon"
           />
         </Link>
-        <div className="nav-cart-count">0</div>
+        <div className="nav-cart-count">{getTotalCartItems()}</div>
       </div>
     </div>
   );

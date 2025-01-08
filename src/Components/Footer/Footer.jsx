@@ -10,7 +10,7 @@ const Footer = () => {
     <div className='footer'>
       <div className="footer-logo">
         <img src={footer_logo} alt="" style={{ width: '60px', height: '60px', objectFit: 'contain' }}/>
-        <p>MY LITTLES ONE</p>
+        <p>MY LITTLE ONES</p>
       </div>
       <ul className="footer-links">
         <li>Company</li>

@@ -19,6 +19,7 @@ import toys_banner from "./Components/Assets/toys_banner.png";
 import shoes_banner from "./Components/Assets/shoes_banner.png";
 import AddProduct from "./Components/Admin/AddProduct";
 import ListProduct from "./Components/Admin/ListProduct";
+import Payment from "./Pages/Payment";
 
 function App() {
   return (
@@ -94,7 +95,6 @@ function App() {
           />
           <Route path="/product/:productId" element={<Product />} />
           <Route path="/cart" element={<Cart />} />
-          <Route path="/manage" element={<Admin />} />
           <Route path="/login" element={<LoginSignup />} />
           <Route path="/addproduct" element={<AddProduct />} />
           <Route path="/listproduct" element={<ListProduct />} />

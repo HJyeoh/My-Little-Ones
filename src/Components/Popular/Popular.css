@@ -1,27 +1,95 @@
-.popular{
+.popular {
     margin-top: 30px;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    gap:10px;
-    height: 100vh;
+    align-items: center;  
+    justify-content: flex-start;  
+    gap: 10px;
+    min-height: 50vh; 
+    padding-bottom: 20px;
 }
-.popular h1{
-    color:#171717;
+
+.popular-item {
+    margin: 20px auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;  /* 4 columns by default */
+    gap: 20px; /* Ensures consistent gaps */
+    justify-content: center;
+    width: fit-content;
+}
+
+.popular h1 {
+    color: #171717;
     font-size: 50px;
     font-weight: 600;
 }
-.popular hr{
+
+.popular hr {
     width: 350px;
     height: 6px;
     border-radius: 10px;
     background: #252525;
 }
-.popular-item{
-    margin: 20px auto;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    row-gap: 80px;
-    justify-content: center;
-    width: fit-content;
+
+/* Mobile responsiveness */
+@media(max-width: 1280px) {
+    .popular {
+        min-height: 60vh;  /* Adjust minimum height for larger tablets */
+    }
+    .popular h1 {
+        font-size: 40px;  /* Smaller title */
+    }
+    .popular hr {
+        width: 160px;  /* Narrower hr */
+        height: 4px;
+    }
+    .popular-item {
+        margin-top: 30px;
+        gap: 20px;  /* Maintain consistent gap */
+    }
+}
+
+@media(max-width: 1024px) {
+    .popular {
+        min-height: 60vh;  /* Adjust minimum height for tablet screens */
+    }
+    .popular h1 {
+        font-size: 30px;  /* Smaller title */
+    }
+    .popular hr {
+        width: 120px;  /* Narrower hr */
+        height: 3px;
+    }
+    .popular-item {
+        gap: 15px;
+        margin-top: 20px;
+    }
+}
+
+@media(max-width: 800px) {
+    .popular {
+        min-height: 50vh;  /* Adjust minimum height for medium screens */
+        gap: 6px;  /* Reduce gap between items */
+    }
+    .popular h1 {
+        font-size: 20px;  /* Smaller title */
+    }
+    .popular hr {
+        width: 100px;  /* Narrower hr */
+        height: 3px;
+    }
+    .popular-item {
+        gap: 5px;
+    }
+}
+
+@media(max-width: 500px) {
+    .popular {
+        min-height: 90vh;  /* Adjust minimum height for small screens */
+    }
+    .popular-item {
+        display: grid;
+        grid-template-columns: 1fr 1fr;  /* 2 columns on smaller screens */
+        gap: 20px;  /* Adjust gap */
+    }
 }
