@@ -1,26 +1,45 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Payment = () => {
-  const [formData, setFormData] = useState({
-    fullName: "",
-    cardNumber: "",
-    expiration: "",
-    cvv: "",
-  });
+  const [paymentMethod, setPaymentMethod] = useState("");
+  const [selectedBank, setSelectedBank] = useState(null);
+  const [showTouchNgoImage, setShowTouchNgoImage] = useState(false);  // State to track TouchNGo image visibility
+  const navigate = useNavigate();
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({
-      ...formData,
-      [name]: value,
-    });
+  const handlePaymentMethodChange = (method) => {
+    setPaymentMethod(method);
+    if (method === "TouchNGo") {
+      setShowTouchNgoImage(true);  // Show the TouchNGo image when selected
+    } else {
+      setShowTouchNgoImage(false);  // Hide the image if another method is selected
+    }
+    if (method !== "Bank") {
+      setSelectedBank(null); // Reset bank if payment method is not Bank
+    }
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Handle form submission logic
-    console.log(formData);
+  const handleBankSelection = (bank) => {
+    setSelectedBank(bank);
+    const bankLinks = {
+      Maybank: "https://www.maybank2u.com.my/", 
+      CIMB: "https://www.cimbclicks.com.my/clicks/#/", 
+      "BANK SIMPANAN NASIONAL": "https://www.mybsn.com.my/mybsn/login/login.do", 
+      RHB: "https://onlinebanking.rhbgroup.com/my/login",
+      "Public Bank": "https://www.pbebank.com/",
+    };
+    
+    if (bankLinks[bank]) {
+      window.location.href = bankLinks[bank];  // Navigate to the bank's website
+    }
   };
+
+  // Determine the button color for "TouchNGo"
+  const touchNgoButtonClass = paymentMethod === "TouchNGo" ? "bg-pink-500 hover:bg-pink-600" : "bg-gray-200 hover:bg-gray-300";
+  // Determine the button color for "Bank"
+  const bankButtonClass = paymentMethod === "Bank" ? "bg-pink-500 hover:bg-pink-600" : "bg-gray-200 hover:bg-gray-300";
+  // Determine if any bank is selected, for pink color
+  const bankListClass = selectedBank ? "bg-pink-500 text-white" : "bg-gray-200 text-gray-900";
 
   return (
     <section className="bg-white py-8 dark:bg-gray-900">
@@ -29,87 +48,50 @@ const Payment = () => {
           <h2 className="text-xl font-semibold text-gray-900 dark:text-white sm:text-2xl">Payment</h2>
 
           <div className="mt-6 sm:mt-8 lg:grid lg:grid-cols-2 lg:gap-12">
-            {/* Left Section: Form Fields */}
-            <form
-              onSubmit={handleSubmit}
-              className="w-full rounded-lg border border-gray-200 bg-white p-4 shadow-sm dark:border-gray-700 dark:bg-gray-800 sm:p-6 lg:p-8"
-            >
-              <div className="mb-6 grid grid-cols-1 sm:grid-cols-2 gap-6">
-                <div>
-                  <label htmlFor="fullName" className="mb-2 block text-sm font-medium text-gray-900 dark:text-white">
-                    Full name (as displayed on card)*
-                  </label>
-                  <input
-                    type="text"
-                    id="fullName"
-                    name="fullName"
-                    value={formData.fullName}
-                    onChange={handleChange}
-                    className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-primary-500 focus:ring-primary-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder:text-gray-400 dark:focus:border-primary-500 dark:focus:ring-primary-500"
-                    placeholder="Bonnie Green"
-                    required
-                  />
-                </div>
-
-                <div>
-                  <label htmlFor="cardNumber" className="mb-2 block text-sm font-medium text-gray-900 dark:text-white">
-                    Card number*
-                  </label>
-                  <input
-                    type="text"
-                    id="cardNumber"
-                    name="cardNumber"
-                    value={formData.cardNumber}
-                    onChange={handleChange}
-                    className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 pe-10 text-sm text-gray-900 focus:border-primary-500 focus:ring-primary-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder:text-gray-400 dark:focus:border-primary-500 dark:focus:ring-primary-500"
-                    placeholder="xxxx-xxxx-xxxx-xxxx"
-                    required
-                  />
-                </div>
-
-                <div>
-                  <label htmlFor="expiration" className="mb-2 block text-sm font-medium text-gray-900 dark:text-white">
-                    Card expiration*
-                  </label>
-                  <input
-                    type="text"
-                    id="expiration"
-                    name="expiration"
-                    value={formData.expiration}
-                    onChange={handleChange}
-                    className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 ps-9 text-sm text-gray-900 focus:border-primary-500 focus:ring-primary-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder:text-gray-400 dark:focus:border-primary-500 dark:focus:ring-primary-500"
-                    placeholder="12/23"
-                    required
-                  />
-                </div>
-
-                <div>
-                  <label
-                    htmlFor="cvv"
-                    className="mb-2 flex items-center gap-1 text-sm font-medium text-gray-900 dark:text-white"
-                  >
-                    CVV*
-                  </label>
-                  <input
-                    type="number"
-                    id="cvv"
-                    name="cvv"
-                    value={formData.cvv}
-                    onChange={handleChange}
-                    className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-primary-500 focus:ring-primary-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder:text-gray-400 dark:focus:border-primary-500 dark:focus:ring-primary-500"
-                    placeholder="•••"
-                    required
-                  />
-                </div>
+            {/* Left Section: Payment Method Selection */}
+            <div className="w-full rounded-lg border border-gray-200 bg-white p-4 shadow-sm dark:border-gray-700 dark:bg-gray-800 sm:p-6 lg:p-8">
+              <h3 className="text-lg font-semibold">Select Payment Method</h3>
+              <div className="mt-4">
+                <button 
+                  onClick={() => handlePaymentMethodChange("TouchNGo")}
+                  className={`w-full py-2 px-4 border border-gray-300 rounded-md text-center ${touchNgoButtonClass}`}>
+                  TouchNGo
+                </button>
+                <button 
+                  onClick={() => handlePaymentMethodChange("Bank")}
+                  className={`w-full py-2 px-4 border border-gray-300 rounded-md text-center mt-2 ${bankButtonClass}`}>
+                  Bank
+                </button>
               </div>
 
-              <button
-                type="submit"
-                className="flex w-full items-center justify-center rounded-lg bg-blue-500 text-white px-5 py-2.5 text-sm font-medium hover:bg-blue-600 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-              >
-                Pay Now
-              </button>
-            </form>
+              {paymentMethod === "Bank" && (
+                <div className="mt-4">
+                  <h4 className="font-semibold">Select Bank</h4>
+                  <ul className="list-none">
+                    {["Maybank", "CIMB", "Public Bank", "RHB", "BANK SIMPANAN NASIONAL"].map((bank) => (
+                      <li 
+                        key={bank} 
+                        onClick={() => handleBankSelection(bank)} 
+                        className={`cursor-pointer py-2 border-b hover:bg-gray-200 ${selectedBank === bank ? bankListClass : ""}`}>
+                        {bank}
+                      </li>
+                    ))}
+                  </ul>
+                  {selectedBank && <p className="mt-2 text-sm text-gray-900">Selected Bank: {selectedBank}</p>}
+                </div>
+              )}
+
+              {/* Conditionally render TouchNGo image */}
+              {showTouchNgoImage && (
+                <div className="mt-4">
+                  <img
+                    src="src/Components/Assets/TNGPAYMENT.jpg"  
+                    alt="TouchNGo"
+                    className="w-full h-auto"
+                  />
+                </div>
+              )}
+            </div>
 
             {/* Right Section: Price Details */}
             <div className="mt-6 sm:mt-8 lg:mt-0 lg:ml-8">

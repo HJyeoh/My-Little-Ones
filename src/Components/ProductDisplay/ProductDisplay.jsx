@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import star_icon from "../Assets/star_icon.png";
 import star_dull_icon from "../Assets/star_dull_icon.png";
 import { ShopContext } from '../../Context/ShopContext';
@@ -6,6 +6,13 @@ import { ShopContext } from '../../Context/ShopContext';
 const ProductDisplay = (props) => {
     const { product } = props;
     const { addToCart } = useContext(ShopContext);
+
+    // State to store selected size
+    const [selectedSize, setSelectedSize] = useState(null);
+    // State to show pop-up message for size selection
+    const [showMessage, setShowMessage] = useState(false);
+    // State to show success message for adding to cart
+    const [successMessage, setSuccessMessage] = useState(false);
 
     // Define size options for different categories
     const sizeOptions = {
@@ -21,6 +28,21 @@ const ProductDisplay = (props) => {
     };
 
     const sizes = sizeOptions[product.category] || [];
+
+    const handleSizeClick = (size) => {
+        setSelectedSize(size);
+        setShowMessage(false); // Hide message if size is selected
+    };
+
+    const handleAddToCart = () => {
+        if (sizes.length > 0 && !selectedSize) {
+            setShowMessage(true); // Show message if no size is selected for products that require it
+        } else {
+            addToCart(product.id, selectedSize || ''); // Pass the selected size or empty string if no size needed
+            setSuccessMessage(true); // Show success message after adding to cart
+            setTimeout(() => setSuccessMessage(false), 2000); // Hide success message after 2 seconds
+        }
+    };
 
     return (
         <div className="flex flex-col lg:flex-row gap-4 px-8 py-4">
@@ -67,7 +89,11 @@ const ProductDisplay = (props) => {
                         <h2 className="text-lg font-semibold text-gray-600">Select Size</h2>
                         <div className="flex gap-4 mt-2">
                             {sizes.map((size, index) => (
-                                <div key={index} className="px-6 py-3 border border-gray-300 rounded-lg cursor-pointer hover:bg-gray-100">
+                                <div
+                                    key={index}
+                                    className={`px-6 py-3 border border-gray-300 rounded-lg cursor-pointer hover:bg-gray-100 ${selectedSize === size ? 'bg-pink-200' : ''}`}
+                                    onClick={() => handleSizeClick(size)}
+                                >
                                     {size}
                                 </div>
                             ))}
@@ -75,11 +101,21 @@ const ProductDisplay = (props) => {
                     </div>
                 )}
                 <button
-                    onClick={() => addToCart(product.id)}
+                    onClick={handleAddToCart}
                     className="mt-6 py-3 px-8 bg-red-500 text-white font-semibold rounded-lg hover:bg-red-600"
                 >
                     ADD TO CART
                 </button>
+                {showMessage && (
+                    <div className="mt-4 text-sm text-red-500">
+                        <p>Please select a size before adding to the cart.</p>
+                    </div>
+                )}
+                {successMessage && (
+                    <div className="mt-4 text-sm text-green-500">
+                        <p>Successfully added to cart!</p>
+                    </div>
+                )}
                 <p className="mt-4 text-sm text-gray-500"><span className="font-semibold">Tags:</span> Modern, Latest</p>
             </div>
         </div>

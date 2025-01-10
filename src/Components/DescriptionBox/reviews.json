@@ -1,0 +1,17 @@
+{
+    "reviews": [
+      {
+        "id": 1,
+        "user": "Alice",
+        "review": "Great product, loved it!",
+        "rating": 5
+      },
+      {
+        "id": 2,
+        "user": "Bob",
+        "review": "Good quality but the shipping was slow.",
+        "rating": 4
+      }
+    ]
+  }
+  
