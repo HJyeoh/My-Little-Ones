@@ -8,8 +8,8 @@ const CartItems = () => {
     const { getTotalCartAmount, all_product, cartItems, removeFromCart } = useContext(ShopContext);
     const navigate = useNavigate();  // Initialize the navigate function
 
-    // Format numbers to one decimal place
-    const formatPrice = (price) => price.toFixed(1);
+    // Format numbers to two decimal places
+    const formatPrice = (price) => price.toFixed(2);  // Use toFixed(2) for two decimal places
 
     // Function to handle checkout redirection
     const handleCheckout = () => {
@@ -65,7 +65,6 @@ const CartItems = () => {
                         <h3>RM{formatPrice(getTotalCartAmount())}</h3>
                     </div>
                 </div>
-                {/* Update the button to use the handleCheckout function */}
                 <button onClick={handleCheckout}>PROCEED TO CHECKOUT</button>
             </div>
         </div>

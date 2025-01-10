@@ -64,12 +64,20 @@
     width: 262px;
     height: 58px;
     outline: none;
-    border: none;
+    border: 2px solid #ff5a5a; /* Border around button */
     background: #ff5a5a;
     color: #fff;
     font-size: 16px;
     font-weight: 600;
     cursor: pointer;
+    border-radius: 5px; /* Optional: rounded corners */
+}
+
+/* Optional: Add a hover effect */
+.cartitems-total button:hover {
+    background: #fff;
+    color: #ff5a5a;
+    border: 2px solid #ff5a5a; /* Match border color with background on hover */
 }
 
 /* Medium Screen (1280px and below) */
@@ -112,6 +120,13 @@
         max-width: 200px;
         height: 45px;
         font-size: 13px;
+    }
+
+    /* Style for the button on medium screens */
+    .cartitems-total button {
+        width: 230px; /* Adjust button width */
+        height: 50px; /* Adjust button height */
+        font-size: 14px; /* Adjust font size */
     }
 }
 
@@ -160,5 +175,12 @@
         width: 180px;
         height: 45px;
         font-size: 12px;
+    }
+
+    /* Style for the button on small screens */
+    .cartitems-total button {
+        width: 180px; /* Adjust button width */
+        height: 45px; /* Adjust button height */
+        font-size: 12px; /* Adjust font size */
     }
 }
