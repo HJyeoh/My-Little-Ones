@@ -38,6 +38,7 @@
     width: 64px;
     height: 50px;
     border: 2px solid #ebebeb;
+    color: #454545;
     background: #fff;
 }
 
@@ -65,8 +66,8 @@
     height: 58px;
     outline: none;
     border: 2px solid #ff5a5a; /* Border around button */
-    background: #ff5a5a;
-    color: #fff;
+    background: none; /* No background */
+    color: #ff5a5a;
     font-size: 16px;
     font-weight: 600;
     cursor: pointer;
@@ -75,8 +76,8 @@
 
 /* Optional: Add a hover effect */
 .cartitems-total button:hover {
-    background: #fff;
-    color: #ff5a5a;
+    background: #ff5a5a;
+    color: #fff;
     border: 2px solid #ff5a5a; /* Match border color with background on hover */
 }
 
