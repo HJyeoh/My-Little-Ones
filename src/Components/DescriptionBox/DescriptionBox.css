@@ -52,6 +52,8 @@
     width: 100%;
     border-radius: 8px;
     margin: auto; /* Ensures the box is centered */
+    word-wrap: break-word; /* Prevents words from overflowing */
+    overflow-wrap: break-word; /* Ensures wrapping of long words */
 }
 
 .reviews-list {
@@ -70,6 +72,7 @@ textarea {
     border-radius: 4px;
     margin-bottom: 10px;
     word-wrap: break-word; /* Allow wrapping of long sentences */
+    overflow-wrap: break-word; /* Ensure text breaks at appropriate places */
 }
 
 button {
@@ -161,6 +164,7 @@ button:hover {
     textarea {
         height: 80px; /* Adjust textarea height for smaller screens */
         word-wrap: break-word; /* Ensure review sentences wrap to the next line */
+        overflow-wrap: break-word; /* Ensure text breaks properly */
     }
 
     button {
