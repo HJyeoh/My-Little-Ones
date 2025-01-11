@@ -1,44 +1,104 @@
-import React, { useState, useRef, useContext } from 'react';
-import { Link } from 'react-router-dom';
-import './Navbar.css';
-import logo from '../Assets/logo.jpg';
-import cart_icon from '../Assets/cart.jpg';
-import nav_dropdown from '../Assets/nav_dropdown.png';
-import { ShopContext } from '../../Context/ShopContext'; 
+import React, { useState, useRef, useContext } from "react";
+import { Link, useLocation } from "react-router-dom";
+import "./Navbar.css";
+import logo from "../Assets/logo.jpg";
+import cart_icon from "../Assets/cart.jpg";
+import nav_dropdown from "../Assets/nav_dropdown.png";
+import { ShopContext } from "../../Context/ShopContext";
 
 const Navbar = () => {
-  const [menu, setMenu] = useState('home');
-  const [isMenuVisible, setIsMenuVisible] = useState(false); // To handle menu visibility
+  const [isMenuVisible, setIsMenuVisible] = useState(false);
+  const [isClothesDropdownVisible, setIsClothesDropdownVisible] =
+    useState(false);
   const menuRef = useRef();
+  const location = useLocation(); // Hook to get current path
 
   const dropdown_toggle = () => {
-    setIsMenuVisible(!isMenuVisible); // Toggle the menu visibility
+    setIsMenuVisible(!isMenuVisible);
+  };
+
+  const clothesDropdown_toggle = () => {
+    setIsClothesDropdownVisible(!isClothesDropdownVisible);
   };
 
   const { getTotalCartItems } = useContext(ShopContext);
 
+  // Function to check if the menu item is active
+  const isActive = (path) => location.pathname === path;
+
   return (
     <div className="navbar">
       <div className="nav-logo">
-        <img src={logo} alt="logo" style={{ width: '50px', height: '50px', objectFit: 'contain' }} />
-        <p style={{ fontSize: '12px' }}>MY LITTLE ONES</p>
+        <img
+          src={logo}
+          alt="logo"
+          style={{ width: "50px", height: "50px", objectFit: "contain" }}
+        />
+        <p style={{ fontSize: "12px" }}>MY LITTLE ONES</p>
       </div>
-      <img className="nav-dropdown" onClick={dropdown_toggle} src={nav_dropdown} alt="dropdown" />
-      <ul ref={menuRef} className={`nav-menu ${isMenuVisible ? 'nav-menu-visible' : ''}`}>
-        <li onClick={() => setMenu('home')}><Link to="/">Home</Link>{menu === 'home' && <hr />}</li>
-        <li onClick={() => setMenu('boy_clothes')}><Link to="/boy_clothes">Boy Clothes</Link>{menu === 'boy_clothes' && <hr />}</li>
-        <li onClick={() => setMenu('girl_clothes')}><Link to="/girl_clothes">Girl Clothes</Link>{menu === 'girl_clothes' && <hr />}</li>
-        <li onClick={() => setMenu('newborn_clothes')}><Link to="/newborn_clothes">Newborn Clothes</Link>{menu === 'newborn_clothes' && <hr />}</li>
-        <li onClick={() => setMenu('shoes')}><Link to="/shoes">Shoes</Link>{menu === 'shoes' && <hr />}</li>
-        <li onClick={() => setMenu('toys')}><Link to="/toys">Toys</Link>{menu === 'toys' && <hr />}</li>
-        <li onClick={() => setMenu('feeding')}><Link to="/feeding">Feeding</Link>{menu === 'feeding' && <hr />}</li>
-        <li onClick={() => setMenu('maternity_care')}><Link to="/maternity_care">Maternity Care</Link>{menu === 'maternity_care' && <hr />}</li>
-        <li onClick={() => setMenu('furniture')}><Link to="/furniture">Furniture</Link>{menu === 'furniture' && <hr />}</li>
-        <li onClick={() => setMenu('maternity_clothes')}><Link to="/maternity_clothes">Maternity Clothes</Link>{menu === 'maternity_clothes' && <hr />}</li>
+      <img
+        className="nav-dropdown"
+        onClick={dropdown_toggle}
+        src={nav_dropdown}
+        alt="dropdown"
+      />
+      <ul
+        ref={menuRef}
+        className={`nav-menu ${isMenuVisible ? "nav-menu-visible" : ""}`}
+      >
+        <li className={isActive("/") ? "active" : ""}>
+          <Link to="/">Home</Link>
+        </li>
+        <li className={isActive("/about") ? "active" : ""}>
+          <Link to="/about">About</Link>
+        </li>
+        <li
+          className={isActive("/clothes") ? "active" : ""}
+          onClick={clothesDropdown_toggle}
+        >
+          <span>Clothes</span>
+          <ul
+            className={`nav-submenu ${
+              isClothesDropdownVisible ? "nav-submenu-visible" : ""
+            }`}
+          >
+            <li className={isActive("/boy_clothes") ? "active" : ""}>
+              <Link to="/boy_clothes">Boy Clothes</Link>
+            </li>
+            <li className={isActive("/girl_clothes") ? "active" : ""}>
+              <Link to="/girl_clothes">Girl Clothes</Link>
+            </li>
+            <li className={isActive("/newborn_clothes") ? "active" : ""}>
+              <Link to="/newborn_clothes">Newborn Clothes</Link>
+            </li>
+            <li className={isActive("/maternity_clothes") ? "active" : ""}>
+              <Link to="/maternity_clothes">Maternity Clothes</Link>
+            </li>
+          </ul>
+        </li>
+        <li className={isActive("/shoes") ? "active" : ""}>
+          <Link to="/shoes">Shoes</Link>
+        </li>
+        <li className={isActive("/toys") ? "active" : ""}>
+          <Link to="/toys">Toys</Link>
+        </li>
+        <li className={isActive("/feeding") ? "active" : ""}>
+          <Link to="/feeding">Feeding</Link>
+        </li>
+        <li className={isActive("/maternity_care") ? "active" : ""}>
+          <Link to="/maternity_care">Maternity Care</Link>
+        </li>
+        <li className={isActive("/furniture") ? "active" : ""}>
+          <Link to="/furniture">Furniture</Link>
+        </li>
       </ul>
       <div className="nav-login-cart">
-        <Link to='/login'><button>Login</button></Link>
-        <Link to='/cart'><img src={cart_icon} alt="cart" className="cart-icon" /></Link>
+        <Link to="/login">
+          <button>Login</button>
+        </Link>
+        <Link to="/cart">
+          <img src={cart_icon} alt="cart" className="cart-icon" />
+        </Link>
         <div className="nav-cart-count">{getTotalCartItems()}</div>
       </div>
     </div>
