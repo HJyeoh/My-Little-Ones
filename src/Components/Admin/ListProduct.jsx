@@ -80,8 +80,8 @@ const ListProduct = () => {
               <h3>{product.name}</h3>
               <p>Product id: {product.id}</p>
               <p>Category: {product.category}</p>
-              <p>Old Price: ${product.old_price}</p>
-              <p>New Price: ${product.new_price}</p>
+              <p>Price: ${product.new_price}</p>
+              <p>Description: ${product.description}</p>
               <button
                 onClick={() => handleRemoveProduct(product.id)}
                 className="delete-btn"

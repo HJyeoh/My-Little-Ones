@@ -1,8 +1,11 @@
+import React from "react";
 import { useState, useEffect } from "react";
 import CartItems from "../Components/CartItems/CartItems"; // Add this import statement
+import AddProduct from "../Components/Admin/AddProduct"; // Add this import statement
 
 const Cart = () => {
   // Step 1: Initialize state for products
+  const userType = localStorage.getItem("userType");
   const [products, setProducts] = useState([]);
 
   // Step 2: Fetch products from the backend when the component mounts
@@ -32,7 +35,10 @@ const Cart = () => {
 
   return (
     <div>
-      <CartItems />
+      <div>
+        {/* Conditionally render AddProduct component if userType is "admin" */}
+        {userType === "admin" ? <AddProduct /> : <CartItems />}
+      </div>
     </div>
   );
 };

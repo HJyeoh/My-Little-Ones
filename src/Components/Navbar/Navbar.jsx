@@ -94,7 +94,7 @@ const Navbar = () => {
             <button>Login</button>
           </Link>
         )}
-        <Link to={userType === "admin" ? "/manage" : "/cart"}>
+        <Link to="/cart">
           <img
             src={userType === "admin" ? cart_icon : cart_icon}
             alt={userType === "admin" ? "manage" : "cart"}

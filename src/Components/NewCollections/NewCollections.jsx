@@ -1,23 +1,32 @@
-import React from 'react'
-import './NewCollections.css'
-import new_collections from '../Assets/products';
-import Item from '../Item/Item';
-    
+import React, { useEffect } from "react";
+import "./NewCollections.css";
+import Item from "../Item/Item";
+import { useState } from "react";
+
 const NewCollections = () => {
-
-const filteredProducts2 = new_collections.filter((item) => item.id >= 21 && item.id <= 28);
-  
-    return (
-    <div className='new-collections'>
-        <h1>NEW COLLECTIONS</h1>
-        <hr />
-        <div className="collections">
-            {filteredProducts2.map((item, i) => (
-                <Item key={item.id || i} id={item.id} name={item.name} image={item.photo} price={item.price}/>
-            ))}
-        </div>
+  const [new_collections, setNewCollections] = useState([]);
+  useEffect(() => {
+    fetch("http://localhost:8080/demo-1.1/newcollection")
+      .then((response) => response.json())
+      .then((data) => setNewCollections(data));
+  }, []);
+  return (
+    <div className="new-collections">
+      <h1>NEW COLLECTIONS</h1>
+      <hr />
+      <div className="collections">
+        {new_collections.map((item, i) => (
+          <Item
+            key={item.id || i}
+            id={item.id}
+            name={item.name}
+            image={item.photo}
+            price={item.price}
+          />
+        ))}
+      </div>
     </div>
-  )
-}
+  );
+};
 
-export default NewCollections
+export default NewCollections;

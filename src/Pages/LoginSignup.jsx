@@ -1,3 +1,4 @@
+import React from "react";
 import { useState } from "react";
 import "./CSS/LoginSignup.css";
 
@@ -31,6 +32,7 @@ const LoginSignup = () => {
           localStorage.setItem("userType", "admin");
         } else {
           localStorage.setItem("userType", "user");
+          localStorage.setItem("userEmail", formData.email);
         }
         window.location.replace("/"); // Redirect after successful login
       } else {

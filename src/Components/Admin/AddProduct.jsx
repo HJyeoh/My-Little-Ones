@@ -7,7 +7,8 @@ const AddProduct = () => {
     name: "",
     old_price: "",
     new_price: "",
-    category: "women",
+    category: "boy",
+    description: "", // Added description field
   });
   const [image, setImage] = useState(null);
 
@@ -21,7 +22,6 @@ const AddProduct = () => {
     setImage(e.target.files[0]);
   };
 
-  // Submit product details and upload image
   // Submit product details and upload image
   const Add_Product = async () => {
     try {
@@ -60,8 +60,9 @@ const AddProduct = () => {
         name: productDetails.name,
         category: productDetails.category,
         image: uploadResult.url, // Use the URL of the uploaded image
-        old_price: productDetails.old_price,
+        old_price: 0,
         new_price: productDetails.new_price,
+        description: productDetails.description, // Include description
       };
 
       // Prepare the data in URL-encoded format
@@ -92,7 +93,8 @@ const AddProduct = () => {
           name: "",
           old_price: "",
           new_price: "",
-          category: "women",
+          category: "boy",
+          description: "",
         });
         setImage(null);
       } else {
@@ -120,16 +122,6 @@ const AddProduct = () => {
           <p>Price</p>
           <input
             type="text"
-            name="old_price"
-            placeholder="Type here"
-            value={productDetails.old_price}
-            onChange={changeHandler}
-          />
-        </div>
-        <div className="addproduct-itemfield">
-          <p>Offer Price</p>
-          <input
-            type="text"
             name="new_price"
             placeholder="Type here"
             value={productDetails.new_price}
@@ -143,11 +135,27 @@ const AddProduct = () => {
             value={productDetails.category}
             onChange={changeHandler}
           >
-            <option value="women">Women</option>
-            <option value="kid">Kid</option>
+            <option value="boy_clothes">Boy Clothes</option>
+            <option value="girl_clothes">Girl Clothes</option>
+            <option value="newborn_clothes">Newborn Clothes</option>
+            <option value="shoes">Shoes</option>
+            <option value="toys">Toys</option>
+            <option value="feeding">Feeding</option>
+            <option value="maternity-care">Maternity Care</option>
+            <option value="furniture">Furniture</option>
+            <option value="maternity-clothes">Maternity Clothes</option>
           </select>
         </div>
         <div className="addproduct-itemfield">
+          <p>Product Description</p>
+          <textarea
+            name="description"
+            placeholder="Type the product description here"
+            value={productDetails.description}
+            onChange={changeHandler}
+          />
+        </div>
+        <div className="addproduct-itemfield w-40 h-40">
           <p>Product Image</p>
           <label htmlFor="file-input">
             <img
