@@ -22,8 +22,8 @@ const Popular = () => {
             key={item.id || i}
             id={item.id}
             name={item.name}
-            image={item.photo}
-            price={item.price}
+            image={`http://localhost:8080/demo-1.1/${item.photo}`}
+            price={item.new_price.toFixed(2)}
           />
         ))}
       </div>

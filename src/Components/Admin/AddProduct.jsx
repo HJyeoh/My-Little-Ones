@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import "./AddProduct.css";
-import Sidebar from "./Sidebar";
 import upload_area from "../Assets/uploadarea.png";
 
 const AddProduct = () => {
@@ -147,11 +146,15 @@ const AddProduct = () => {
             onChange={changeHandler}
             className="add-product-selector min-w-[160px]"
           >
-            <option value="women">Women</option>
-            <option value="men">Men</option>
-            <option value="kid">Kid</option>
             <option value="boy_clothes">Boy Clothes</option>
             <option value="girl_clothes">Girl Clothes</option>
+            <option value="newborn_clothes">Newborn Clothes</option>
+            <option value="maternity_clothes">Maternity Clothes</option>
+            <option value="shoes">Shoes</option>
+            <option value="toys">Toys</option>
+            <option value="feeding">Feeding</option>
+            <option value="maternity_care">Maternity Care</option>
+            <option value="furniture">Furniture</option>
           </select>
         </div>
 

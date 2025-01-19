@@ -49,22 +49,22 @@ const ProductDisplay = (props) => {
       {/* Left Section: Thumbnails */}
       <div className="hidden lg:flex flex-col gap-2">
         <img
-          src={product.photo}
+          src={`http://localhost:8080/demo-1.1/${product.photo}`}
           alt="Thumbnail 1"
           className="h-[96px] w-[96px] object-cover"
         />
         <img
-          src={product.photo}
+          src={`http://localhost:8080/demo-1.1/${product.photo}`}
           alt="Thumbnail 2"
           className="h-[96px] w-[96px] object-cover"
         />
         <img
-          src={product.photo}
+          src={`http://localhost:8080/demo-1.1/${product.photo}`}
           alt="Thumbnail 3"
           className="h-[96px] w-[96px] object-cover"
         />
         <img
-          src={product.photo}
+          src={`http://localhost:8080/demo-1.1/${product.photo}`}
           alt="Thumbnail 4"
           className="h-[96px] w-[96px] object-cover"
         />
@@ -73,28 +73,28 @@ const ProductDisplay = (props) => {
       {/* Center Section: Main Product Image */}
       <div className="flex flex-col lg:w-2/3">
         <img
-          src={product.photo}
+          src={`http://localhost:8080/demo-1.1/${product.photo}`}
           alt="Main product"
           className="w-full max-w-[500px] h-[700px] object-cover mx-auto lg:mx-0"
         />
         <div className="lg:hidden grid grid-cols-4 gap-2 mt-4">
           <img
-            src={product.photo}
+            src={`http://localhost:8080/demo-1.1/${product.photo}`}
             alt="Thumbnail 1"
             className="h-[96px] w-full object-cover"
           />
           <img
-            src={product.photo}
+            src={`http://localhost:8080/demo-1.1/${product.photo}`}
             alt="Thumbnail 2"
             className="h-[96px] w-full object-cover"
           />
           <img
-            src={product.photo}
+            src={`http://localhost:8080/demo-1.1/${product.photo}`}
             alt="Thumbnail 3"
             className="h-[96px] w-full object-cover"
           />
           <img
-            src={product.photo}
+            src={`http://localhost:8080/demo-1.1/${product.photo}`}
             alt="Thumbnail 4"
             className="h-[96px] w-full object-cover"
           />
@@ -113,7 +113,7 @@ const ProductDisplay = (props) => {
           <p className="text-sm">(122)</p>
         </div>
         <div className="text-xl font-semibold text-red-500 mt-4">
-          RM{product.price}
+          <p>RM{product.new_price.toFixed(2)}</p>
         </div>
         <p className="mt-4 text-gray-600 text-sm">{product.description}</p>
         {sizes.length > 0 && (

@@ -11,6 +11,20 @@ const ListProduct = () => {
 
   const productsPerPage = 10;
 
+  // Categories mapping for readable names
+  const categoryMapping = {
+    boy_clothes: "Boy Clothes",
+    girl_clothes: "Girl Clothes",
+    newborn_clothes: "Newborn Clothes",
+    maternity_clothes: "Maternity Clothes",
+    shoes: "Shoes",
+    toys: "Toys",
+    feeding: "Feeding",
+    maternity_care: "Maternity Care",
+    furniture: "Furniture",
+    // Add more categories as needed
+  };
+
   // Fetch products from the backend
   const fetchProducts = async () => {
     try {
@@ -130,10 +144,11 @@ const ListProduct = () => {
           className="category-filter"
         >
           <option value="">All Categories</option>
-          <option value="Electronics">Electronics</option>
-          <option value="Fashion">Fashion</option>
-          <option value="Baby">Baby</option>
-          {/* Add more categories as needed */}
+          {Object.keys(categoryMapping).map((categoryKey) => (
+            <option key={categoryKey} value={categoryKey}>
+              {categoryMapping[categoryKey]}
+            </option>
+          ))}
         </select>
       </div>
 
@@ -156,13 +171,14 @@ const ListProduct = () => {
               className="listproduct-format-main listproduct-format"
             >
               <img
-                src={`http://localhost:8080/demo-1.1/${product.image}`}
+                src={`http://localhost:8080/demo-1.1/${product.photo}`}
                 alt={product.name}
                 className="listproduct-product-icon"
               />
               <p>{product.name}</p>
               <p>RM{product.new_price.toFixed(2)}</p>
-              <p>{product.category}</p>
+              <p>{categoryMapping[product.category]}</p>{" "}
+              {/* Display category in readable form */}
               <img
                 src={cross_icon}
                 alt="Remove"
