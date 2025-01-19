@@ -10,7 +10,7 @@ const RelatedProducts = ({ category }) => {
     .slice(0, 4); // Select first 4 products
 
   return (
-    <div className="relatedproducts">
+    <div className="relatedproducts lg:mx-36">
       <h1>Related Products</h1>
       <hr />
       <div className="relatedproducts-item">
@@ -19,8 +19,8 @@ const RelatedProducts = ({ category }) => {
             key={item.id}
             id={item.id}
             name={item.name}
-            image={item.photo}
-            price={item.price}
+            image={item.photo || item.image}
+            price={item.price.toFixed(2)}
           />
         ))}
       </div>

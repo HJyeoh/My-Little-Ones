@@ -153,36 +153,37 @@ const ListProduct = () => {
       </div>
 
       {/* Product List */}
-      <div className="listproduct-format-main">
+      <div className="listproduct-format-main border-b border-b-slate-400 mb-3">
         <p>Products</p>
         <p>Title</p>
         <p>Price</p>
         <p>Category</p>
         <p className="text-center">Remove</p>
       </div>
-      <div id="product-list" className="listproduct-allproducts">
-        <hr />
+      <div id="product-list" className="w-full">
         {currentProducts.length === 0 ? (
           <p>No products available.</p>
         ) : (
           currentProducts.map((product) => (
             <div
               key={product.id}
-              className="listproduct-format-main listproduct-format"
+              className="grid grid-cols-[1fr_3fr_1fr_1fr_1fr_1fr] gap-3 text-sm md:text-md lg:text-lg "
             >
               <img
-                src={`http://localhost:8080/demo-1.1/${product.photo}`}
+                src={`http://localhost:8080/demo-1.1/${
+                  product.photo || product.image
+                }`}
                 alt={product.name}
-                className="listproduct-product-icon"
+                className="listproduct-product-icon mb-4 md:min-w-[65px] h-full"
               />
-              <p>{product.name}</p>
-              <p>RM{product.new_price.toFixed(2)}</p>
-              <p>{categoryMapping[product.category]}</p>{" "}
+              <p className="mt-2">{product.name}</p>
+              <p className="mt-2">RM{product.new_price.toFixed(2)}</p>
+              <p className="mt-2">{categoryMapping[product.category]}</p>{" "}
               {/* Display category in readable form */}
               <img
                 src={cross_icon}
                 alt="Remove"
-                className="listproduct-remove-icon"
+                className="mt-2 listproduct-remove-icon ml-[40%]"
                 onClick={() => handleRemoveProduct(product.id)}
               />
             </div>
@@ -198,7 +199,11 @@ const ListProduct = () => {
             <button
               key={i}
               onClick={() => handlePageChange(i + 1)}
-              className={currentPage === i + 1 ? "active-page" : ""}
+              className={
+                currentPage === i + 1
+                  ? "active-page border-x border-white"
+                  : "border border-white "
+              }
             >
               {i + 1}
             </button>

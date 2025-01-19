@@ -100,6 +100,7 @@ const Navbar = () => {
           <button
             onClick={() => {
               localStorage.removeItem("auth-token");
+              localStorage.setItem("userType", "guest");
               window.location.replace("/");
             }}
           >

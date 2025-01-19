@@ -11,7 +11,7 @@ const NewCollections = () => {
       .then((data) => setNewCollections(data));
   }, []);
   return (
-    <div className="new-collections">
+    <div className="new-collections mx-8 lg:mx-32">
       <h1>NEW COLLECTIONS</h1>
       <hr />
       <div className="collections">
@@ -20,7 +20,7 @@ const NewCollections = () => {
             key={item.id || i}
             id={item.id}
             name={item.name}
-            image={`http://localhost:8080/demo-1.1/${item.photo}`}
+            image={`http://localhost:8080/demo-1.1/${item.photo || item.image}`}
             price={item.new_price.toFixed(2)}
           />
         ))}

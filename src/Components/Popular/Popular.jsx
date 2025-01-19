@@ -13,7 +13,7 @@ const Popular = () => {
   }, []);
 
   return (
-    <div id="popular-section" className="popular">
+    <div id="popular-section" className="popular mx-8 lg:mx-28">
       <h1>POPULAR IN BABY</h1>
       <hr />
       <div className="popular-item">
@@ -22,7 +22,7 @@ const Popular = () => {
             key={item.id || i}
             id={item.id}
             name={item.name}
-            image={`http://localhost:8080/demo-1.1/${item.photo}`}
+            image={`http://localhost:8080/demo-1.1/${item.photo || item.image}`}
             price={item.new_price.toFixed(2)}
           />
         ))}

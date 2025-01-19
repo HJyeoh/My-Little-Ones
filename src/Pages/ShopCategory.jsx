@@ -14,26 +14,25 @@ const ShopCategory = (props) => {
   );
 
   return (
-    <div className="shop-category">
+    <div className="shop-category mb-12">
       <img className="shopcategory-banner" src={props.banner} alt="" />
       <div className="shopcategory-indexSort">
         <p>
           <span>Showing {filteredProducts.length}</span> out of{" "}
           {all_product.length} products
         </p>
-        <div className="shopcategory-sort">
-          Sort by <img src={dropdown_icon} alt="" />
-        </div>
       </div>
-      <div className="shopcategory-products">
+      <div className="shopcategory-products lg:mx-32 md:mt-2 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 gap-y-6">
         {filteredProducts.length > 0 ? (
           filteredProducts.map((item, i) => (
             <Item
               key={item.id || i}
               id={item.id}
               name={item.name}
-              image={`http://localhost:8080/demo-1.1/${item.photo}`}
-              price={item.new_price}
+              image={`http://localhost:8080/demo-1.1/${
+                item.photo || item.image
+              }`}
+              price={item.new_price.toFixed(2)}
             />
           ))
         ) : (

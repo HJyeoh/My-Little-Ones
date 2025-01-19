@@ -35,6 +35,13 @@ const ProductDisplay = (props) => {
   };
 
   const handleAddToCart = () => {
+    if (localStorage.getItem("userType") === "admin") {
+      alert("You are not allowed to add items to cart as an admin");
+      return;
+    } else if (localStorage.getItem("userType") !== "user") {
+      alert("Please log in to add items to the cart");
+      return;
+    }
     if (sizes.length > 0 && !selectedSize) {
       setShowMessage(true); // Show message if no size is selected for products that require it
     } else {
@@ -45,56 +52,74 @@ const ProductDisplay = (props) => {
   };
 
   return (
-    <div className="flex flex-col lg:flex-row gap-4 px-8 py-4">
+    <div className="flex flex-col lg:flex-row gap-4 px-8 py-4 justify-center">
       {/* Left Section: Thumbnails */}
       <div className="hidden lg:flex flex-col gap-2">
         <img
-          src={`http://localhost:8080/demo-1.1/${product.photo}`}
+          src={`http://localhost:8080/demo-1.1/${
+            product.photo || product.image
+          }`}
           alt="Thumbnail 1"
           className="h-[96px] w-[96px] object-cover"
         />
         <img
-          src={`http://localhost:8080/demo-1.1/${product.photo}`}
+          src={`http://localhost:8080/demo-1.1/${
+            product.photo || product.image
+          }`}
           alt="Thumbnail 2"
           className="h-[96px] w-[96px] object-cover"
         />
         <img
-          src={`http://localhost:8080/demo-1.1/${product.photo}`}
+          src={`http://localhost:8080/demo-1.1/${
+            product.photo || product.image
+          }`}
           alt="Thumbnail 3"
           className="h-[96px] w-[96px] object-cover"
         />
         <img
-          src={`http://localhost:8080/demo-1.1/${product.photo}`}
+          src={`http://localhost:8080/demo-1.1/${
+            product.photo || product.image
+          }`}
           alt="Thumbnail 4"
           className="h-[96px] w-[96px] object-cover"
         />
       </div>
 
       {/* Center Section: Main Product Image */}
-      <div className="flex flex-col lg:w-2/3">
+      <div className="flex flex-col lg:min-w-2/5 lg:mr-12 ">
         <img
-          src={`http://localhost:8080/demo-1.1/${product.photo}`}
+          src={`http://localhost:8080/demo-1.1/${
+            product.photo || product.image
+          }`}
           alt="Main product"
           className="w-full max-w-[500px] h-[700px] object-cover mx-auto lg:mx-0"
         />
         <div className="lg:hidden grid grid-cols-4 gap-2 mt-4">
           <img
-            src={`http://localhost:8080/demo-1.1/${product.photo}`}
+            src={`http://localhost:8080/demo-1.1/${
+              product.photo || product.image
+            }`}
             alt="Thumbnail 1"
             className="h-[96px] w-full object-cover"
           />
           <img
-            src={`http://localhost:8080/demo-1.1/${product.photo}`}
+            src={`http://localhost:8080/demo-1.1/${
+              product.photo || product.image
+            }`}
             alt="Thumbnail 2"
             className="h-[96px] w-full object-cover"
           />
           <img
-            src={`http://localhost:8080/demo-1.1/${product.photo}`}
+            src={`http://localhost:8080/demo-1.1/${
+              product.photo || product.image
+            }`}
             alt="Thumbnail 3"
             className="h-[96px] w-full object-cover"
           />
           <img
-            src={`http://localhost:8080/demo-1.1/${product.photo}`}
+            src={`http://localhost:8080/demo-1.1/${
+              product.photo || product.image
+            }`}
             alt="Thumbnail 4"
             className="h-[96px] w-full object-cover"
           />
@@ -123,7 +148,7 @@ const ProductDisplay = (props) => {
               {sizes.map((size, index) => (
                 <div
                   key={index}
-                  className={`px-6 py-3 border border-gray-300 rounded-lg cursor-pointer hover:bg-gray-100 ${
+                  className={`px-4 py-3 border border-gray-300 rounded-lg cursor-pointer hover:bg-gray-100 ${
                     selectedSize === size ? "bg-pink-200" : ""
                   }`}
                   onClick={() => handleSizeClick(size)}

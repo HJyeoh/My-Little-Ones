@@ -1,174 +1,174 @@
 /* Existing styles */
 .descriptionbox {
-    margin: 120px 170px;
+  margin: 120px 170px;
 }
 
 .descriptionbox-navigator {
-    display: flex;
+  display: flex;
 }
 
 .descriptionbox-nav-box {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 16px;
-    font-weight: 600;
-    width: 171px;
-    height: 70px;
-    border: 1px solid #d0d0d0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  font-weight: 600;
+  width: 171px;
+  height: 70px;
+  border: 1px solid #d0d0d0;
 }
 
 .descriptionbox-nav-box.fade {
-    background: #fbfbfb;
-    color: #555;
+  background: #fbfbfb;
+  color: #555;
 }
 
 .descriptionbox-description {
-    display: flex;
-    flex-direction: column;
-    gap: 25px;
-    border: 1px solid #d0d0d0;
-    padding: 48px;
-    padding-bottom: 70px;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  border: 1px solid #d0d0d0;
+  padding: 48px;
+  padding-bottom: 70px;
 }
 
 /* Review Popup */
 .review-popup {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5);
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .review-popup-content {
-    background: white;
-    padding: 20px;
-    max-width: 500px;
-    width: 100%;
-    border-radius: 8px;
-    margin: auto; /* Ensures the box is centered */
-    word-wrap: break-word; /* Prevents words from overflowing */
-    overflow-wrap: break-word; /* Ensures wrapping of long words */
+  background: white;
+  padding: 20px;
+  max-width: 500px;
+  width: 100%;
+  border-radius: 8px;
+  margin: auto; /* Ensures the box is centered */
+  word-wrap: break-word; /* Prevents words from overflowing */
+  overflow-wrap: break-word; /* Ensures wrapping of long words */
 }
 
 .reviews-list {
-    margin-bottom: 20px;
+  margin-bottom: 20px;
 }
 
 .review-item {
-    margin-bottom: 10px;
+  margin-bottom: 10px;
 }
 
 textarea {
-    width: 100%;
-    height: 100px;
-    padding: 10px;
-    border: 1px solid #d0d0d0;
-    border-radius: 4px;
-    margin-bottom: 10px;
-    word-wrap: break-word; /* Allow wrapping of long sentences */
-    overflow-wrap: break-word; /* Ensure text breaks at appropriate places */
+  width: 100%;
+  height: 100px;
+  padding: 10px;
+  border: 1px solid #d0d0d0;
+  border-radius: 4px;
+  margin-bottom: 10px;
+  word-wrap: break-word; /* Allow wrapping of long sentences */
+  overflow-wrap: break-word; /* Ensure text breaks at appropriate places */
 }
 
 button {
-    padding: 10px 15px;
-    border: none;
-    background-color: #007bff;
-    color: white;
-    cursor: pointer;
+  padding: 10px 15px;
+  border: none;
+  background-color: #3498db;
+  color: white;
+  cursor: pointer;
 }
 
 button:hover {
-    background-color: #0056b3;
+  background-color: #0056b3;
 }
 
 /* Remove blue background from stars */
 .rating {
-    display: flex;
-    gap: 5px; /* Ensure stars are spaced horizontally */
+  display: flex;
+  gap: 5px; /* Ensure stars are spaced horizontally */
 }
 
 .rating button {
-    background: none;
-    border: none;
-    font-size: 30px;
-    cursor: pointer;
-    color: gray;
-    transition: color 0.2s;
+  background: none;
+  border: none;
+  font-size: 30px;
+  cursor: pointer;
+  color: gray;
+  transition: color 0.2s;
 }
 
 .rating button:hover,
 .rating button:active {
-    color: gold;
+  color: gold;
 }
 
 .rating button.selected {
-    color: gold;
+  color: gold;
 }
 
 /* Responsive Styles */
-@media(max-width: 1280px) {
-    .descriptionbox {
-        margin: 60px;
-    }
+@media (max-width: 1280px) {
+  .descriptionbox {
+    margin: 60px;
+  }
 }
 
-@media(max-width: 800px) {
-    .descriptionbox {
-        margin: 60px 20px;
-    }
+@media (max-width: 800px) {
+  .descriptionbox {
+    margin: 60px 20px;
+  }
 
-    .descriptionbox-description {
-        font-size: 14px;
-    }
+  .descriptionbox-description {
+    font-size: 14px;
+  }
 
-    .review-popup-content {
-        width: 90%;
-    }
+  .review-popup-content {
+    width: 90%;
+  }
 
-    .rating button {
-        font-size: 25px; /* Adjusting star size for mobile */
-    }
+  .rating button {
+    font-size: 25px; /* Adjusting star size for mobile */
+  }
 }
 
 /* Media query for 500px and below */
-@media(max-width: 500px) {
-    .descriptionbox {
-        margin: 40px 10px; /* Adjust margins for smaller screens */
-    }
+@media (max-width: 500px) {
+  .descriptionbox {
+    margin: 40px 10px; /* Adjust margins for smaller screens */
+  }
 
-    .descriptionbox-description {
-        padding: 20px; /* Reduced padding for smaller screens */
-        font-size: 12px; /* Smaller font size for mobile */
-    }
+  .descriptionbox-description {
+    padding: 20px; /* Reduced padding for smaller screens */
+    font-size: 12px; /* Smaller font size for mobile */
+  }
 
-    .review-popup-content {
-        padding: 12px; /* Reduced padding */
-        width: 80%; /* Limit width to 80% on smaller screens */
-        margin: auto; /* Ensures the box is centered */
-    }
+  .review-popup-content {
+    padding: 12px; /* Reduced padding */
+    width: 80%; /* Limit width to 80% on smaller screens */
+    margin: auto; /* Ensures the box is centered */
+  }
 
-    .reviews-list {
-        margin-bottom: 10px; /* Adjust margin for smaller screens */
-    }
+  .reviews-list {
+    margin-bottom: 10px; /* Adjust margin for smaller screens */
+  }
 
-    .rating button {
-        font-size: 20px; /* Adjust star size further */
-    }
+  .rating button {
+    font-size: 20px; /* Adjust star size further */
+  }
 
-    textarea {
-        height: 80px; /* Adjust textarea height for smaller screens */
-        word-wrap: break-word; /* Ensure review sentences wrap to the next line */
-        overflow-wrap: break-word; /* Ensure text breaks properly */
-    }
+  textarea {
+    height: 80px; /* Adjust textarea height for smaller screens */
+    word-wrap: break-word; /* Ensure review sentences wrap to the next line */
+    overflow-wrap: break-word; /* Ensure text breaks properly */
+  }
 
-    button {
-        width: 100%; /* Make button width 100% for smaller screens */
-        padding: 12px; /* Adjust padding */
-    }
+  button {
+    width: 100%; /* Make button width 100% for smaller screens */
+    padding: 12px; /* Adjust padding */
+  }
 }

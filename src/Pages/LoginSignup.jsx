@@ -1,5 +1,4 @@
-import React from "react";
-import { useState } from "react";
+import React, { useState } from "react";
 import "./CSS/LoginSignup.css";
 
 const LoginSignup = () => {
@@ -9,9 +8,14 @@ const LoginSignup = () => {
     password: "",
     email: "",
   });
+  const [isChecked, setIsChecked] = useState(false); // Track checkbox state
 
   const changeHandler = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleCheckboxChange = () => {
+    setIsChecked(!isChecked); // Toggle checkbox state
   };
 
   const login = async () => {
@@ -63,6 +67,16 @@ const LoginSignup = () => {
     }
   };
 
+  const handleContinue = () => {
+    if (!isChecked) {
+      alert(
+        "Please agree to the terms of use & privacy policy before continuing."
+      );
+      return;
+    }
+    state === "Login" ? login() : signup();
+  };
+
   return (
     <div className="loginsignup">
       <div className="loginsignup-container">
@@ -76,9 +90,7 @@ const LoginSignup = () => {
               type="text"
               placeholder="Your Name"
             />
-          ) : (
-            <></>
-          )}
+          ) : null}
           <input
             name="email"
             value={formData.email}
@@ -94,38 +106,24 @@ const LoginSignup = () => {
             placeholder="Password"
           />
         </div>
-        <button
-          onClick={() => {
-            state === "Login" ? login() : signup();
-          }}
-        >
-          Continue
-        </button>
+        <button onClick={handleContinue}>Continue</button>
         {state === "Sign Up" ? (
           <p className="loginsignup-login">
             Already have an account?{" "}
-            <span
-              onClick={() => {
-                setstate("Login");
-              }}
-            >
-              Login here
-            </span>
+            <span onClick={() => setstate("Login")}>Login here</span>
           </p>
         ) : (
           <p className="loginsignup-login">
             Create an account?{" "}
-            <span
-              onClick={() => {
-                setstate("Sign Up");
-              }}
-            >
-              Click here
-            </span>
+            <span onClick={() => setstate("Sign Up")}>Click here</span>
           </p>
         )}
         <div className="loginsignup-agree">
-          <input type="checkbox" name="" id="" />
+          <input
+            type="checkbox"
+            checked={isChecked}
+            onChange={handleCheckboxChange}
+          />
           <p>By continuing, I agree to use the terms of use & privacy policy</p>
         </div>
       </div>
