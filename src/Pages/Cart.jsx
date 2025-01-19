@@ -36,8 +36,7 @@ const Cart = () => {
   return (
     <div>
       <div>
-        {/* Conditionally render AddProduct component if userType is "admin" */}
-        {userType === "admin" ? <AddProduct /> : <CartItems />}
+        <CartItems />
       </div>
     </div>
   );

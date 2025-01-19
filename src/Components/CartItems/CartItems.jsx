@@ -18,12 +18,13 @@ const CartItems = () => {
     if (typeof price !== "number" || isNaN(price)) {
       return "0.0"; // Return '0.0' if price is invalid
     }
-    return price.toFixed(1); // Otherwise, format the price
+    return price.toFixed(2); // Otherwise, format the price
   };
 
   // Function to handle checkout redirection
   const handleCheckout = () => {
-    navigate("/payment"); // Redirect to the Payment page
+    const totalAmount = getTotalCartAmount(); // Get the total amount
+    navigate("/payment", { state: { totalAmount } }); // Pass totalAmount as state to the Payment page
   };
 
   return (
@@ -49,11 +50,13 @@ const CartItems = () => {
                     className="carticon-product-icon"
                   />
                   <p>{product.name}</p>
-                  <p>RM{formatPrice(product.price)}</p>
+                  <p>RM{formatPrice(product.new_price)}</p>
                   <button className="cartitems-quantity">
                     {cartItems[product.id]}
                   </button>
-                  <p>RM{formatPrice(product.price * cartItems[product.id])}</p>
+                  <p>
+                    RM{formatPrice(product.new_price * cartItems[product.id])}
+                  </p>
                   <img
                     className="cartitems-remove-icon"
                     src={remove_icon}

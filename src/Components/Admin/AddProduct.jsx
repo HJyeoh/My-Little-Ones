@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./AddProduct.css";
 import Sidebar from "./Sidebar";
+import upload_area from "../Assets/uploadarea.png";
 
 const AddProduct = () => {
   const [productDetails, setProductDetails] = useState({
@@ -106,64 +107,72 @@ const AddProduct = () => {
   };
 
   return (
-    <>
-      <div className="add-product">
+    <div className="add-product">
+      <h1 className="add-product-title mb-4 text-xl">Add New Product</h1>
+      <div className="add-product-form">
+        {/* Product Title */}
         <div className="addproduct-itemfield">
           <p>Product Title</p>
           <input
             type="text"
             name="name"
-            placeholder="Type here"
+            placeholder="Enter product title"
             value={productDetails.name}
             onChange={changeHandler}
+            className="addproduct-input"
           />
         </div>
-        <div className="addproduct-itemfield">
-          <p>Price</p>
-          <input
-            type="text"
-            name="new_price"
-            placeholder="Type here"
-            value={productDetails.new_price}
-            onChange={changeHandler}
-          />
+
+        {/* Price and Offer Price */}
+        <div className="addproduct-price my-4">
+          <div className="addproduct-itemfield">
+            <p>Price</p>
+            <input
+              type="text"
+              name="new_price"
+              placeholder="Enter price"
+              value={productDetails.new_price}
+              onChange={changeHandler}
+              className="addproduct-input"
+            />
+          </div>
         </div>
-        <div className="addproduct-itemfield">
+
+        {/* Product Category */}
+        <div className="addproduct-itemfield my-4">
           <p>Product Category</p>
           <select
             name="category"
             value={productDetails.category}
             onChange={changeHandler}
+            className="add-product-selector min-w-[160px]"
           >
+            <option value="women">Women</option>
+            <option value="men">Men</option>
+            <option value="kid">Kid</option>
             <option value="boy_clothes">Boy Clothes</option>
             <option value="girl_clothes">Girl Clothes</option>
-            <option value="newborn_clothes">Newborn Clothes</option>
-            <option value="shoes">Shoes</option>
-            <option value="toys">Toys</option>
-            <option value="feeding">Feeding</option>
-            <option value="maternity-care">Maternity Care</option>
-            <option value="furniture">Furniture</option>
-            <option value="maternity-clothes">Maternity Clothes</option>
           </select>
         </div>
-        <div className="addproduct-itemfield">
+
+        {/* Product Description */}
+        <div className="addproduct-itemfield mt-4">
           <p>Product Description</p>
           <textarea
             name="description"
-            placeholder="Type the product description here"
+            placeholder="Enter product description"
             value={productDetails.description}
             onChange={changeHandler}
+            className="addproduct-textarea"
           />
         </div>
-        <div className="addproduct-itemfield w-40 h-40">
+
+        {/* Product Image */}
+        <div className="addproduct-itemfield">
           <p>Product Image</p>
           <label htmlFor="file-input">
             <img
-              src={
-                image
-                  ? URL.createObjectURL(image)
-                  : "upload_area_placeholder.jpg"
-              }
+              src={image ? URL.createObjectURL(image) : upload_area}
               alt="Product Thumbnail"
               className="addproduct-thumbnail-img"
             />
@@ -176,11 +185,13 @@ const AddProduct = () => {
             onChange={handleImageChange}
           />
         </div>
+
+        {/* Add Product Button */}
         <button className="addproduct-btn" onClick={Add_Product}>
           Add Product
         </button>
       </div>
-    </>
+    </div>
   );
 };
 

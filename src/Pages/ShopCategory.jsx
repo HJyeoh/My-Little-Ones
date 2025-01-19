@@ -40,7 +40,6 @@ const ShopCategory = (props) => {
           <p>No products found in this category.</p>
         )}
       </div>
-      <div className="shopcategory-loadmore">Explore more</div>
     </div>
   );
 };
