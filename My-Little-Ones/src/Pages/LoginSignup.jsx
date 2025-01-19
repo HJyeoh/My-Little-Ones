@@ -60,6 +60,8 @@ const LoginSignup = () => {
 
     if (response.ok) {
       alert(result.message); // Handle success message
+      localStorage.setItem("userType", "user");
+      localStorage.setItem("userEmail", formData.email);
       localStorage.setItem("auth-token", result.token); // Save JWT token
       window.location.replace("/"); // Redirect to home page
     } else {
