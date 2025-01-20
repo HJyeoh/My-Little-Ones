@@ -8,9 +8,6 @@ const CartItems = () => {
   const { getTotalCartAmount, all_product, cartItems, removeFromCart } =
     useContext(ShopContext);
   const navigate = useNavigate(); // Initialize the navigate function
-  console.log("All Products:", all_product);
-  console.log("Cart Items:", cartItems);
-  console.log("Total Amount:", getTotalCartAmount());
 
   // Format numbers to one decimal place
   // Format numbers to one decimal place, ensuring price is a valid number

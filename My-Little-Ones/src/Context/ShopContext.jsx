@@ -58,11 +58,8 @@ const ShopContextProvider = (props) => {
       }).toString(),
     })
       .then((response) => response.json())
-      .then((data) => console.log(data))
       .catch((error) => console.error("Error:", error));
   };
-
-  console.log(data);
 
   const removeFromCart = (itemId) => {
     setCartItems((prev) => {
@@ -87,10 +84,6 @@ const ShopContextProvider = (props) => {
       }).toString(),
     })
       .then((response) => response.json())
-      .then((data) => {
-        console.log("Item removed from cart:", data);
-        // Handle any UI updates or error messages based on response
-      })
       .catch((error) => {
         console.error("Error:", error);
       });

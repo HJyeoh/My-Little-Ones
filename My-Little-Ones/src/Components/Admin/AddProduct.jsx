@@ -7,7 +7,7 @@ const AddProduct = () => {
     name: "",
     old_price: "",
     new_price: "",
-    category: "boy",
+    category: "boy_clothes",
     description: "", // Added description field
   });
   const [image, setImage] = useState(null);
@@ -46,7 +46,6 @@ const AddProduct = () => {
 
       // Parse the image upload response
       const uploadResult = await uploadResponse.json();
-      console.log(uploadResult);
 
       if (!uploadResponse.ok || !uploadResult.url) {
         alert(
@@ -67,9 +66,6 @@ const AddProduct = () => {
 
       // Prepare the data in URL-encoded format
       const urlEncodedData = new URLSearchParams(productData);
-
-      // Log the URL-encoded data for debugging
-      console.log(urlEncodedData.toString());
 
       // Send the request to the backend using application/x-www-form-urlencoded
       const response = await fetch(

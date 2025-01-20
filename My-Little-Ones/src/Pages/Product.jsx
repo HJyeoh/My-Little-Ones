@@ -12,7 +12,6 @@ const Product = () => {
 
   // Ensure product is found, otherwise show a fallback UI
   const product = all_product.find((e) => e.id === Number(productId));
-  console.log("Product:", product);
   if (!product) {
     return <div>Product not found</div>; // Fallback if product not found
   }

@@ -1,12 +1,10 @@
 import React, { useContext } from "react";
 import "./CSS/ShopCategory.css";
 import { ShopContext } from "../Context/ShopContext";
-import dropdown_icon from "../Components/Assets/dropdown_icon.png";
 import Item from "../Components/Item/Item";
 
 const ShopCategory = (props) => {
   const { all_product } = useContext(ShopContext);
-  console.log("All Products:", all_product);
 
   // Filter products by category
   const filteredProducts = all_product.filter(
