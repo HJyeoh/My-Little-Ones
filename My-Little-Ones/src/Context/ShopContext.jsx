@@ -17,25 +17,25 @@ const ShopContextProvider = (props) => {
   const [cartItems, setCartItems] = useState(getDefaultCart());
 
   useEffect(() => {
-    fetch("http://localhost:8080/demo-1.1/showproduct")
+    fetch("http://localhost:8000/showproduct")
       .then((response) => response.json())
       .then((data) => setAllProduct(data));
 
     if (localStorage.getItem("auth-token")) {
       const userEmail = localStorage.getItem("userEmail");
 
-      fetch("http://localhost:8080/demo-1.1/getcart", {
+      fetch("http://localhost:8000/getcart", {
         method: "POST",
         headers: {
           "Content-Type": "application/x-www-form-urlencoded",
         },
         body: new URLSearchParams({
-          user_email: userEmail, // Send the user email
+          user_email: userEmail,
         }).toString(),
       })
         .then((response) => response.json())
         .then((data) => {
-          setCartItems(data); // Set the cart data from response
+          setCartItems(data);
         })
         .catch((error) => {
           console.error("Error fetching cart data:", error);
@@ -44,17 +44,17 @@ const ShopContextProvider = (props) => {
   }, []);
 
   const addToCart = (itemId) => {
-    setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] + 1 }));
-    const userEmail = localStorage.getItem("userEmail"); // Get email from localStorage
+    setCartItems((prev) => ({ ...prev, [itemId]: (prev[itemId] || 0) + 1 }));
+    const userEmail = localStorage.getItem("userEmail");
 
-    fetch("http://localhost:8080/demo-1.1/addtocart", {
+    fetch("http://localhost:8000/addtocart", {
       method: "POST",
       headers: {
         "Content-Type": "application/x-www-form-urlencoded",
       },
       body: new URLSearchParams({
-        product_id: itemId, // Pass the product ID
-        user_email: userEmail, // Pass the user email
+        product_id: itemId,
+        user_email: userEmail,
       }).toString(),
     })
       .then((response) => response.json())
@@ -73,14 +73,14 @@ const ShopContextProvider = (props) => {
 
     const userEmail = localStorage.getItem("userEmail");
 
-    fetch("http://localhost:8080/demo-1.1/removefromcart", {
+    fetch("http://localhost:8000/removefromcart", {
       method: "POST",
       headers: {
         "Content-Type": "application/x-www-form-urlencoded",
       },
       body: new URLSearchParams({
-        product_id: itemId, // Pass the product ID
-        user_email: userEmail, // Pass the user email
+        product_id: itemId,
+        user_email: userEmail,
       }).toString(),
     })
       .then((response) => response.json())

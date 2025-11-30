@@ -56,30 +56,22 @@ const ProductDisplay = (props) => {
       {/* Left Section: Thumbnails */}
       <div className="hidden lg:flex flex-col gap-2">
         <img
-          src={`http://localhost:8080/demo-1.1/${
-            product.photo || product.image
-          }`}
+          src={product.photo || product.image}
           alt="Thumbnail 1"
           className="h-[96px] w-[96px] object-cover"
         />
         <img
-          src={`http://localhost:8080/demo-1.1/${
-            product.photo || product.image
-          }`}
+          src={product.photo || product.image}
           alt="Thumbnail 2"
           className="h-[96px] w-[96px] object-cover"
         />
         <img
-          src={`http://localhost:8080/demo-1.1/${
-            product.photo || product.image
-          }`}
+          src={product.photo || product.image}
           alt="Thumbnail 3"
           className="h-[96px] w-[96px] object-cover"
         />
         <img
-          src={`http://localhost:8080/demo-1.1/${
-            product.photo || product.image
-          }`}
+          src={product.photo || product.image}
           alt="Thumbnail 4"
           className="h-[96px] w-[96px] object-cover"
         />
@@ -88,38 +80,28 @@ const ProductDisplay = (props) => {
       {/* Center Section: Main Product Image */}
       <div className="flex flex-col lg:min-w-2/5 lg:mr-12 ">
         <img
-          src={`http://localhost:8080/demo-1.1/${
-            product.photo || product.image
-          }`}
+          src={product.photo || product.image}
           alt="Main product"
           className="w-full max-w-[500px] h-[700px] object-cover mx-auto lg:mx-0"
         />
         <div className="lg:hidden grid grid-cols-4 gap-2 mt-4">
           <img
-            src={`http://localhost:8080/demo-1.1/${
-              product.photo || product.image
-            }`}
+            src={product.photo || product.image}
             alt="Thumbnail 1"
             className="h-[96px] w-full object-cover"
           />
           <img
-            src={`http://localhost:8080/demo-1.1/${
-              product.photo || product.image
-            }`}
+            src={product.photo || product.image}
             alt="Thumbnail 2"
             className="h-[96px] w-full object-cover"
           />
           <img
-            src={`http://localhost:8080/demo-1.1/${
-              product.photo || product.image
-            }`}
+            src={product.photo || product.image}
             alt="Thumbnail 3"
             className="h-[96px] w-full object-cover"
           />
           <img
-            src={`http://localhost:8080/demo-1.1/${
-              product.photo || product.image
-            }`}
+            src={product.photo || product.image}
             alt="Thumbnail 4"
             className="h-[96px] w-full object-cover"
           />

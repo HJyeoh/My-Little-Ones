@@ -2,7 +2,7 @@
 
 ### 📖 Overview
 
-**My Little Ones** is an eCommerce platform for pregnancy-related products. The project consists of a **React frontend** and a **Java Servlet backend** running on **Tomcat** with **MongoDB** as the database.
+**My Little Ones** is an eCommerce platform for pregnancy-related products. The project consists of a **React frontend** and an **Express.js backend** with **Firebase** as the database.
 
 ---
 
@@ -10,7 +10,7 @@
 
 ```sh
 /My-Little-Ones   # Frontend (React + TailwindCSS)
-/test/demo        # Backend (Java Servlet on Tomcat, MongoDB)
+/backend          # Backend (Express.js + Firebase)
 ```
 
 ### 👤 User Roles & Authentication
@@ -49,22 +49,20 @@ npm run dev
 
 ### 🛠 Backend Setup
 
-- Apache Tomcat (installed & configured)
-- Apache Maven (installed)
-- VS Code Extension: Install "Community Server Connector" to deploy the Tomcat server
-
-#### 🚀 Deployment (Only if Changes Occur)
-
 ```sh
 # Navigate to the backend directory
-cd test/demo
+cd backend
 
-# Build and install the project
-mvn clean install
+# Install dependencies
+npm install
+
+# Start the development server
+npm run dev
 ```
 
-### ⚠️ Image Storage Notice
+- The backend will run at: http://localhost:8000
 
-- Images are stored inside the Tomcat server.
-- ⚠ Images will be lost when redeploying the backend.
-- **Improvement** : using an external storage service (Firebase Storage) for permanent storage.
+### 🔥 Firebase Configuration
+
+- Images are stored in Firebase Storage (permanent storage)
+- User data and products are stored in Firestore Database

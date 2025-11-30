@@ -42,9 +42,7 @@ const CartItems = () => {
               <div key={product.id}>
                 <div className="cartitems-format cartitems-format-main">
                   <img
-                    src={`http://localhost:8080/demo-1.1/${
-                      product.photo || product.image
-                    }`}
+                    src={product.photo || product.image}
                     alt="product"
                     className="carticon-product-icon"
                   />

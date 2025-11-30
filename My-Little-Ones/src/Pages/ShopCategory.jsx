@@ -27,9 +27,7 @@ const ShopCategory = (props) => {
               key={item.id || i}
               id={item.id}
               name={item.name}
-              image={`http://localhost:8080/demo-1.1/${
-                item.photo || item.image
-              }`}
+              image={item.photo || item.image}
               price={item.new_price.toFixed(2)}
             />
           ))

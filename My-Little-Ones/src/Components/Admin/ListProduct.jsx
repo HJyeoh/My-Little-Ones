@@ -29,7 +29,7 @@ const ListProduct = () => {
   const fetchProducts = async () => {
     try {
       const response = await fetch(
-        "http://localhost:8080/demo-1.1/showproduct"
+        "http://localhost:8000/showproduct"
       );
 
       if (!response.ok) {
@@ -48,7 +48,7 @@ const ListProduct = () => {
   const handleRemoveProduct = async (id) => {
     try {
       const response = await fetch(
-        "http://localhost:8080/demo-1.1/removeproduct",
+        "http://localhost:8000/removeproduct",
         {
           method: "POST",
           headers: {
@@ -116,11 +116,9 @@ const ListProduct = () => {
     fetchProducts();
   }, []);
 
-  // Scroll to the top of the page instantly when the page changes
   const handlePageChange = (pageNumber) => {
     if (pageNumber !== currentPage) {
       setCurrentPage(pageNumber);
-      window.scrollTo(0, 0); // Scroll to the top of the page instantly
     }
   };
 
@@ -170,9 +168,7 @@ const ListProduct = () => {
               className="grid grid-cols-[1fr_3fr_1fr_1fr_1fr_1fr] gap-3 text-sm md:text-md lg:text-lg "
             >
               <img
-                src={`http://localhost:8080/demo-1.1/${
-                  product.photo || product.image
-                }`}
+                src={product.photo || product.image}
                 alt={product.name}
                 className="listproduct-product-icon mb-4 md:min-w-[65px] h-full"
               />

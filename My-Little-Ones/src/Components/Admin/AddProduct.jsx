@@ -37,7 +37,7 @@ const AddProduct = () => {
 
       // Step 1: Upload the image to get the image URL
       const uploadResponse = await fetch(
-        "http://localhost:8080/demo-1.1/upload",
+        "http://localhost:8000/upload",
         {
           method: "POST",
           body: formData,
@@ -69,13 +69,13 @@ const AddProduct = () => {
 
       // Send the request to the backend using application/x-www-form-urlencoded
       const response = await fetch(
-        "http://localhost:8080/demo-1.1/createproduct",
+        "http://localhost:8000/createproduct",
         {
           method: "POST",
           headers: {
-            "Content-Type": "application/x-www-form-urlencoded", // Specify the content type as URL-encoded
+            "Content-Type": "application/x-www-form-urlencoded",
           },
-          body: urlEncodedData.toString(), // Convert the data to URL-encoded string
+          body: urlEncodedData.toString(),
         }
       );
 

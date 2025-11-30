@@ -6,9 +6,9 @@ import { useState } from "react";
 const NewCollections = () => {
   const [new_collections, setNewCollections] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:8080/demo-1.1/newcollection")
+    fetch("http://localhost:8000/showproduct")
       .then((response) => response.json())
-      .then((data) => setNewCollections(data));
+      .then((data) => setNewCollections(data.slice(-8)));
   }, []);
   return (
     <div className="new-collections mx-8 lg:mx-32">
@@ -20,7 +20,7 @@ const NewCollections = () => {
             key={item.id || i}
             id={item.id}
             name={item.name}
-            image={`http://localhost:8080/demo-1.1/${item.photo || item.image}`}
+            image={item.photo || item.image}
             price={item.new_price.toFixed(2)}
           />
         ))}

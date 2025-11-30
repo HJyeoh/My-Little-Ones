@@ -14,7 +14,7 @@ const Cart = () => {
       try {
         // Fetch products from the server
         const response = await fetch(
-          "http://localhost:8080/demo-1.1/showproduct"
+          "http://localhost:8000/showproduct"
         );
 
         // If response is ok, convert it to JSON and store in state

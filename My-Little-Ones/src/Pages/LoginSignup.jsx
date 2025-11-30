@@ -20,7 +20,7 @@ const LoginSignup = () => {
 
   const login = async () => {
     try {
-      const response = await fetch("http://localhost:8080/demo-1.1/login", {
+      const response = await fetch("http://localhost:8000/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/x-www-form-urlencoded",
@@ -48,7 +48,7 @@ const LoginSignup = () => {
   };
 
   const signup = async () => {
-    const response = await fetch("http://localhost:8080/demo-1.1/signup", {
+    const response = await fetch("http://localhost:8000/signup", {
       method: "POST",
       headers: {
         "Content-Type": "application/x-www-form-urlencoded",

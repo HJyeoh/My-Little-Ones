@@ -7,9 +7,9 @@ const Popular = () => {
   const [popularProducts, setPopularProducts] = React.useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:8080/demo-1.1/popular")
+    fetch("http://localhost:8000/showproduct")
       .then((response) => response.json())
-      .then((data) => setPopularProducts(data));
+      .then((data) => setPopularProducts(data.slice(0, 4)));
   }, []);
 
   return (
@@ -22,7 +22,7 @@ const Popular = () => {
             key={item.id || i}
             id={item.id}
             name={item.name}
-            image={`http://localhost:8080/demo-1.1/${item.photo || item.image}`}
+            image={item.photo || item.image}
             price={item.new_price.toFixed(2)}
           />
         ))}
