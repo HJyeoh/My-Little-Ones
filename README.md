@@ -68,3 +68,8 @@ mvn clean install
 - Images are stored inside the Tomcat server.
 - ⚠ Images will be lost when redeploying the backend.
 - **Improvement** : using an external storage service (Firebase Storage) for permanent storage.
+
+### 🔧 Updates in `version2` Branch
+
+- Backend refactored from Java to Express.js  
+- Image persistence issue fixed by moving to Firebase Storage
